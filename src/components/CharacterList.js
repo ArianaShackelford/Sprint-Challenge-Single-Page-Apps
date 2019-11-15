@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import {Link} from 'react-router-dom';
 import CharacterCard from './CharacterCard'
+import SearchForm from "./SearchForm";
 
 const CharacterList = () => {
   // TODO: Add useState to track data from useEffect
 const [characters, setCharacters] = useState([])
 const [sortedData, setSortedData] = useState([])
+
+
 
   useEffect(() => {
     // TODO: Add API Request here - must run in `useEffect`
@@ -28,6 +31,7 @@ const [sortedData, setSortedData] = useState([])
     <section className="character-list">
       <h2>Character List</h2>
       <Link to={'/'}>Home</Link>
+      <SearchForm  characters={characters}/>
       {sortedData.map(character => {
         return <CharacterCard key={character.id} character={character}/>
       })}
