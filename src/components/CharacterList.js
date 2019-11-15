@@ -7,7 +7,7 @@ import SearchForm from "./SearchForm";
 const CharacterList = () => {
   // TODO: Add useState to track data from useEffect
 const [characters, setCharacters] = useState([])
-const [sortedData, setSortedData] = useState([])
+// const [sortedData, setSortedData] = useState([])
 
 
 
@@ -19,7 +19,7 @@ const [sortedData, setSortedData] = useState([])
       .then(res => {
         console.log(res.data.results);
         setCharacters(res.data.results);
-        setSortedData(res.data.results)
+        // setSortedData(res.data.results)
       })
       .catch(error => {
         console.error('Server Error', error)
@@ -32,9 +32,12 @@ const [sortedData, setSortedData] = useState([])
       <h2>Character List</h2>
       <Link to={'/'}>Home</Link>
       <SearchForm  characters={characters}/>
-      {sortedData.map(character => {
-        return <CharacterCard key={character.id} character={character}/>
-      })}
+      {/* {sortedData.map(character => {
+        return <CharacterCard key={character.id} character={character}
+        
+      })} */}
+
+      {characters.map(characters => <CharacterCard key={characters.id} character={characters}/>)}
     </section>
   );
 }
